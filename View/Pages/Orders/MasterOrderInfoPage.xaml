@@ -1,0 +1,21 @@
+﻿<Page x:Class="WpfServisCenter.View.Pages.Servis.MasterOrderInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfServisCenter.View.Pages.Servis"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MasterOrderInfoPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Width="400" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" FontSize="20" Text="{Binding Код, StringFormat={}Код заказа №{0}}" />
+            <TextBlock Text="{Binding Дата1,StringFormat={}Дата заказа: {0}}" />
+            <TextBlock Text="{Binding Техника,StringFormat={}Техника: {0}}" />
+            <TextBlock Text="{Binding Описание,StringFormat={}Описание: {0}}" />
+            <Button Click="AcceptClick" Content="Принять" />
+
+        </StackPanel>
+    </Grid>
+</Page>

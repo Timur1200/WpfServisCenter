@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="147906034a894c689812a6e43dd92b79" Name="Diagram1">
+        <EntityTypeShape EntityType="ServisCenterModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServisCenterModel.Заказ" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServisCenterModel.Клиент" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServisCenterModel.Персонал" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="ServisCenterModel.FK_Заказ_Клиент" ManuallyRouted="false" />
+        <AssociationConnector Association="ServisCenterModel.FK_Заказ_Персонал" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ServisCenterModel.Услуги" Width="1.5" PointX="1.5" PointY="11.125" />
+        <EntityTypeShape EntityType="ServisCenterModel.ОказаниеУслуг" Width="1.5" PointX="8.25" PointY="7.625" />
+        <AssociationConnector Association="ServisCenterModel.FK_ОказаниеУслуг_Услуги" />
+        <EntityTypeShape EntityType="ServisCenterModel.СписокОказанияУслуг" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="ServisCenterModel.FK_СписокОказанияУслуг_Клиент" />
+        <AssociationConnector Association="ServisCenterModel.FK_ОказаниеУслуг_СписокОказанияУслуг" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,43 @@
+﻿<Page x:Class="WpfServisCenter.View.Pages.Servis.MyOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfServisCenter.View.Pages.Servis"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Loaded="Page_Loaded"
+      Title="MyOrderPage">
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.33*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid >
+                    <TextBlock FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Мои заказы" />
+
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <DataGrid AutoGenerateColumns="False" Name="DGridOrder" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Код заказа" Binding="{Binding Код}" />
+                        <DataGridTextColumn Header="Дата поступления" Binding="{Binding Дата1}" />
+                        <DataGridTextColumn Header="Техника" Binding="{Binding Техника}" />
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="CompleteClick" Content="Завершить" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Page>

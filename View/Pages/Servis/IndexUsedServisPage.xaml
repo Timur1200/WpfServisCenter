@@ -1,0 +1,45 @@
+﻿<Page x:Class="WpfServisCenter.View.Pages.Servis.IndexUsedServisPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfServisCenter.View.Pages.Servis"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Loaded="Page_Loaded"
+      Title="IndexUsedServisPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.33*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <StackPanel Orientation="Horizontal">
+                <Button Click="AddClick" Content="Создать" />
+
+                <Button Click="DelClick" Content="Удалить"  />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid AutoGenerateColumns="False" Name="DGridUsedServis" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Код" Binding="{Binding Код}" />
+                    <DataGridTextColumn Header="Клиент" Binding="{Binding Клиент.Фио}" />
+                    <DataGridTextColumn Header="Дата" Binding="{Binding Дата1}" />
+                    <DataGridTextColumn Header="Статус" Binding="{Binding Статус}" />
+                    
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Перейти" Click="GoServisClick" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+    </Grid>
+</Page>

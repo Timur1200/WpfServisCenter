@@ -1,0 +1,20 @@
+﻿<Page x:Class="WpfServisCenter.View.Pages.Servis.AddEditUsedServisPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfServisCenter.View.Pages.Servis"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Loaded="Page_Loaded"
+      Title="AddEditUsedServisPage">
+
+    <Grid>
+        <StackPanel Width="250" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock  Text="Клиент:" />
+            <TextBox x:Name="TextBoxClientSearch" TextChanged="TextBoxClientSearch_TextChanged" />
+            <ComboBox  SelectedItem="{Binding Клиент}" IsTextSearchEnabled="False"  DisplayMemberPath="Фио" Name="ClientComboBox" />
+            <Button Click="SaveClick" Content="Сохранить" /> 
+        </StackPanel>
+    </Grid>
+</Page>

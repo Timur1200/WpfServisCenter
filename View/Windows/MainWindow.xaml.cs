@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfServisCenter.View.Pages.Client;
 using WpfServisCenter.View.Pages.Orders;
+using WpfServisCenter.View.Pages.Personal;
 using WpfServisCenter.View.Pages.Servis;
 
 namespace WpfServisCenter.View.Windows
@@ -83,6 +84,11 @@ namespace WpfServisCenter.View.Windows
         private void UsedServisClick(object sender, RoutedEventArgs e)
         {
             Go(new IndexUsedServisPage());
+        }
+
+        private void PersonalClick(object sender, RoutedEventArgs e)
+        {
+            Go(new IndexPersonalPage());
         }
     }
 }

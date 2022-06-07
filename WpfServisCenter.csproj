@@ -101,6 +101,7 @@
     <Compile Include="Model\ContextEF.cs" />
     <Compile Include="Model\Заказ.cs" />
     <Compile Include="Model\ОказаниеУслуг.cs" />
+    <Compile Include="Model\Персонал.cs" />
     <Compile Include="Model\СписокОказанияУслуг.cs" />
     <Compile Include="Servis\Enums.cs" />
     <Compile Include="Servis\MySystem.cs" />
@@ -123,6 +124,12 @@
     </Compile>
     <Compile Include="View\Pages\Orders\ReadyOrdersPage.xaml.cs">
       <DependentUpon>ReadyOrdersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Personal\AddEditPersonalPage.xaml.cs">
+      <DependentUpon>AddEditPersonalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Personal\IndexPersonalPage.xaml.cs">
+      <DependentUpon>IndexPersonalPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\Servis\AddEditServisPage.xaml.cs">
       <DependentUpon>AddEditServisPage.xaml</DependentUpon>
@@ -212,6 +219,9 @@
     <None Include="Word\Servis.docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Word\АктПриемки.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Word\Чек.docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -266,6 +276,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\Orders\ReadyOrdersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Personal\AddEditPersonalPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Personal\IndexPersonalPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -333,5 +351,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -30,6 +30,7 @@
                     <Button Content="Мои заказы" Click="MyOrdersClick" Width="Auto" />
                 </StackPanel>
                 <StackPanel Name="AdminPanel" Width="Auto">
+                    <Button Content="Персонал" Click="PersonalClick" Width="Auto" />
                     <Button Content="Клиенты" Click="ClientClick" Width="Auto" />
                     <Button Click="ServisClick" Content="Услуги" Width="Auto" />
                     <Button Click="OrdersClick"  Content="Заказы" Width="Auto"/>

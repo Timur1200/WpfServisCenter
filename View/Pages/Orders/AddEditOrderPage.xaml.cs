@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace WpfServisCenter.View.Pages.Orders
 {
@@ -48,6 +49,7 @@ namespace WpfServisCenter.View.Pages.Orders
             }
             ContextEF.GetContext().SaveChanges();
             MessageBox.Show("Информация сохранена!");
+            ToWord(_Order);
             PageNavigate.Back();
         }
 
@@ -64,5 +66,32 @@ namespace WpfServisCenter.View.Pages.Orders
 
             ClientBox.ItemsSource = ContextEF.GetContext().Клиент.Where(q=>q.Фио.ToLower().Contains(Text.ToLower())).ToList();
         }
+        private readonly string TemplateFileName = System.IO.Path.GetFullPath(@"Word/АктПриемки.docx");
+        void ReplaceWordStub(String stubToReplace, string text, Word.Document wordDocument)
+        {
+            var range = wordDocument.Content;
+            range.Find.ClearFormatting();
+            range.Find.Execute(FindText: stubToReplace, ReplaceWith: text);
+        }
+        private void ToWord(Заказ order)
+        {
+            
+
+            var wordApp = new Word.Application();
+
+            wordApp.Visible = false;
+            var wordDocument = wordApp.Documents.Open(TemplateFileName);
+            
+            ReplaceWordStub("(код)", order.Код.ToString(), wordDocument);
+            ReplaceWordStub("(дата)", order.Дата1, wordDocument);
+            ReplaceWordStub("(клиент)", order.Клиент.Фио, wordDocument);
+            ReplaceWordStub("(техника)", order.Техника, wordDocument);
+            wordDocument.SaveAs2(System.IO.Path.GetFullPath($@"Word/АктПриемки{Guid.NewGuid()}.docx"));
+
+            wordApp.Visible = true;
+
+
+        }
+
     }
 }

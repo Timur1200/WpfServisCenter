@@ -90,5 +90,12 @@ namespace WpfServisCenter.View.Windows
         {
             Go(new IndexPersonalPage());
         }
+
+
+        private void ZakazClick(object sender, RoutedEventArgs e)
+        {
+            DNSwindow dNSwindow = new DNSwindow();
+            dNSwindow.Show();
+        }
     }
 }

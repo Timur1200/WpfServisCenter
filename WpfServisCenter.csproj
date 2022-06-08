@@ -161,6 +161,9 @@
     <Compile Include="View\Windows\AddServisWindow.xaml.cs">
       <DependentUpon>AddServisWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\DNSwindow.xaml.cs">
+      <DependentUpon>DNSwindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\LoginWin.xaml.cs">
       <DependentUpon>LoginWin.xaml</DependentUpon>
     </Compile>
@@ -324,6 +327,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\AddServisWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\DNSwindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

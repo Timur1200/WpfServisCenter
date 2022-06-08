@@ -28,6 +28,7 @@
                 <StackPanel Name="MasterPanel">
                     <Button Content="Новые заказы" Click="NewOrdersClick" Width="Auto" />
                     <Button Content="Мои заказы" Click="MyOrdersClick" Width="Auto" />
+                    <Button Content="Заказать комплектующие" Click="ZakazClick"  Width="auto"/>
                 </StackPanel>
                 <StackPanel Name="AdminPanel" Width="Auto">
                     <Button Content="Персонал" Click="PersonalClick" Width="Auto" />

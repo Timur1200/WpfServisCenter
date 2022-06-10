@@ -36,8 +36,13 @@ namespace WpfServisCenter.View.Pages.Orders
         private void ToWord(Заказ заказ)
         {
             StringBuilder stringBuilder = new StringBuilder();
-          //  var aa = ContextEF.GetContext().СписокМатериаловСклада.Where(q => q.КодЗаказа == заказ.Код);
-          //  foreach(var item in )
+            var aa = ContextEF.GetContext().СписокМатериаловСклада.Where(q => q.КодЗаказа == заказ.Код);
+            int sumStorage = 0;
+            foreach(var item in aa)
+            {
+                stringBuilder.Append(item.Name);
+                sumStorage += item.Количество * item.Склад.Цена.Value;
+            }
 
             var wordApp = new Word.Application();
 
@@ -50,6 +55,9 @@ namespace WpfServisCenter.View.Pages.Orders
             ReplaceWordStub("(дата2)", $"{заказ.Дата2}", wordDocument);
             ReplaceWordStub("(техника)", $"{заказ.Техника}", wordDocument);
             ReplaceWordStub("(стоимость)", $"{заказ.Цена}", wordDocument);
+            ReplaceWordStub("(сумма)", $"{sumStorage}", wordDocument);
+            ReplaceWordStub("(склад)", $"{stringBuilder}", wordDocument);
+            ReplaceWordStub("(итог)", $"{заказ.Цена + sumStorage}", wordDocument);
             wordDocument.SaveAs2(System.IO.Path.GetFullPath($@"Word/Чек_{Guid.NewGuid()}.docx"));
 
             wordApp.Visible = true;

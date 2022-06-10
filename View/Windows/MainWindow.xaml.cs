@@ -38,6 +38,7 @@ namespace WpfServisCenter.View.Windows
                 AdminPanel.Visibility = Visibility.Collapsed;
                 MasterPanel.Visibility = Visibility.Visible;
             }
+            TextBlock1.Text = $"Ваша роль: {(Роли)Session.User.Роль}";
         }
 
         private void Go(Page p)

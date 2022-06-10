@@ -61,6 +61,7 @@ namespace WpfServisCenter.View.Pages.Orders
             wordDocument.SaveAs2(System.IO.Path.GetFullPath($@"Word/Чек_{Guid.NewGuid()}.docx"));
 
             wordApp.Visible = true;
+            Page_Loaded(null, null);
         }
 
         private void ReadyClick(object sender, RoutedEventArgs e)

@@ -15,8 +15,8 @@
             <TextBlock Text="{Binding Дата1,StringFormat={}Дата заказа: {0}}" />
             <TextBlock Text="{Binding Техника,StringFormat={}Техника: {0}}" />
             <TextBlock Text="{Binding Описание,StringFormat={}Описание: {0}}" />
-            <TextBlock Text="Ответ:" />
-            <TextBox Text="{Binding Ответ}" />
+            <!--TextBlock Text="Ответ:" />
+            <TextBox Text="{Binding Ответ}" /-->
             <TextBlock Text="Стоимость:" />
             <TextBox Text="{Binding Цена}" />
             <ListBox DisplayMemberPath="Name"  MinHeight="50" x:Name="ServisListBox"></ListBox>

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfServisCenter.View.Windows"
         mc:Ignorable="d"
+        Icon="icon.ico"
         xmlns:s="clr-namespace:System;assembly=mscorlib"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="" ResizeMode="NoResize" Height="450" Width="500">

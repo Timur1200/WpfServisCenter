@@ -72,6 +72,13 @@ namespace WpfServisCenter.View.Pages.Servis
 
         private void ToWord(СписокОказанияУслуг ServisList)
         {
+            StringBuilder stringBuilder = new StringBuilder();
+            var a = ContextEF.GetContext().ОказаниеУслуг.Where(q=>q.КодСпискаОказанияУслуг==ServisList.Код).ToList();
+            foreach(var s in a)
+            {
+                stringBuilder.AppendLine(s.Услуги.Имя);
+            }
+
             var wordApp = new Word.Application();
 
             wordApp.Visible = false;
@@ -80,6 +87,7 @@ namespace WpfServisCenter.View.Pages.Servis
             ReplaceWordStub("(клиент)", ServisList.Клиент.Фио, wordDocument);
             ReplaceWordStub("(дата)", ServisList.Дата1, wordDocument);
             ReplaceWordStub("(стоимость)", ServisList.Стоимость.ToString(), wordDocument);
+            ReplaceWordStub("(услуга)", stringBuilder.ToString(), wordDocument);
 
             wordDocument.SaveAs2(System.IO.Path.GetFullPath($@"Word/Servis{Guid.NewGuid()}.docx"));
 

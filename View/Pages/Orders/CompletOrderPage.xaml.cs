@@ -30,7 +30,15 @@ namespace WpfServisCenter.View.Pages.Servis
         private Заказ _Order { get; set; }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ServisListBox.ItemsSource = ContextEF.GetContext().СписокМатериаловСклада.Where(q=>q.КодЗаказа == _Order.Код).ToList();
+            var x = ContextEF.GetContext().СписокМатериаловСклада.Where(q => q.КодЗаказа == _Order.Код).ToList();
+            ServisListBox.ItemsSource = x;
+            int sum = 0;
+            foreach(var item in x)
+            {
+                sum += item.Количество * item.Склад.Цена.Value;
+            }
+            FullSumTextBox.Text = $"Сумма {sum} ";
+
         }
         public static CompletOrderPage thisPage;
         public static void Reload()
@@ -53,6 +61,10 @@ namespace WpfServisCenter.View.Pages.Servis
 
         private void DelClick(object sender, RoutedEventArgs e)
         {
+            if (ServisListBox.SelectedItem == null)
+            {
+                return;
+            }
             var qwer = ServisListBox.SelectedItem as СписокМатериаловСклада;
             Склад склад = ContextEF.GetContext().Склад.Where(q => q.Код == qwer.КодСклада).First();
             склад.Количество += qwer.Количество;

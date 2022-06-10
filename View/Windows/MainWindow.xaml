@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfServisCenter.View.Windows"
         mc:Ignorable="d"
+        Icon="icon.ico"
         Title="" Height="650" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
@@ -16,6 +17,7 @@
         <Grid Background="#0A337F">
             <Button HorizontalAlignment="Left" Content="Выйти" Click="LeaveClick" />
             <TextBlock Foreground="#DEE9FC" HorizontalAlignment="Center" FontSize="26" VerticalAlignment="Center" Text="Сервисный центр" />
+            <TextBlock Name="TextBlock1" Text="_" Foreground="#DEE9FC" VerticalAlignment="Bottom" />
         </Grid>
 
         <Grid Grid.Row="1">

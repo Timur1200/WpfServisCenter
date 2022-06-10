@@ -375,6 +375,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="View\Windows\icon.ico" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

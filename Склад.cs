@@ -12,27 +12,20 @@ namespace WpfServisCenter
     using System;
     using System.Collections.Generic;
     
-    public partial class Заказ
+    public partial class Склад
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Заказ()
+        public Склад()
         {
             this.СписокМатериаловСклада = new HashSet<СписокМатериаловСклада>();
         }
     
         public int Код { get; set; }
-        public Nullable<int> КодКлиента { get; set; }
-        public Nullable<int> КодМастера { get; set; }
-        public Nullable<System.DateTime> ДатаПоступления { get; set; }
-        public Nullable<System.DateTime> ДатаВыдачи { get; set; }
-        public Nullable<int> Статус { get; set; }
+        public string Категория { get; set; }
+        public string Имя { get; set; }
+        public Nullable<int> Количество { get; set; }
         public Nullable<int> Цена { get; set; }
-        public string Описание { get; set; }
-        public string Техника { get; set; }
-        public string Ответ { get; set; }
     
-        public virtual Клиент Клиент { get; set; }
-        public virtual Персонал Персонал { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<СписокМатериаловСклада> СписокМатериаловСклада { get; set; }
     }

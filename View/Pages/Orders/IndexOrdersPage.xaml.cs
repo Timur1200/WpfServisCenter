@@ -23,6 +23,9 @@ namespace WpfServisCenter.View.Pages.Orders
         public IndexOrdersPage()
         {
             InitializeComponent();
+            TypeComboBox.Items.Add("Клиент");
+           
+            TypeComboBox.Items.Add("Техника");
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -48,7 +51,34 @@ namespace WpfServisCenter.View.Pages.Orders
             ContextEF.GetContext().SaveChanges();
             Page_Loaded(null, null);
         }
+        private void Search()
+        {
+            if (SearchTextBox.Text == "")
+            {
+                Page_Loaded(null, null);
+                return;
+            }
+            if (TypeComboBox.SelectedIndex == 0)
+            {
+                DGridOrder.ItemsSource = ContextEF.GetContext().Заказ.
+                    Where(q=>q.Клиент.Фио.Contains(SearchTextBox.Text)).ToList(); 
+            }
+            
+            else
+            {
+                DGridOrder.ItemsSource = ContextEF.GetContext().Заказ.
+                    Where(q => q.Техника.Contains(SearchTextBox.Text)).ToList();
+            }
+        }
 
-        
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Search();
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Search();
+        }
     }
 }

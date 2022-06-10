@@ -17,6 +17,10 @@
         <EntityTypeShape EntityType="ServisCenterModel.СписокОказанияУслуг" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="ServisCenterModel.FK_СписокОказанияУслуг_Клиент" />
         <AssociationConnector Association="ServisCenterModel.FK_ОказаниеУслуг_СписокОказанияУслуг" />
+        <EntityTypeShape EntityType="ServisCenterModel.Склад" Width="1.5" PointX="3" PointY="13.875" />
+        <EntityTypeShape EntityType="ServisCenterModel.СписокМатериаловСклада" Width="1.5" PointX="5.25" PointY="4.875" />
+        <AssociationConnector Association="ServisCenterModel.FK_СписокМатериаловСклада_Заказ" />
+        <AssociationConnector Association="ServisCenterModel.FK_СписокМатериаловСклада_Склад" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

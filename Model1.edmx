@@ -57,6 +57,25 @@
           <Property Name="Телефон" Type="nvarchar" MaxLength="50" />
           <Property Name="Пароль" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Склад">
+          <Key>
+            <PropertyRef Name="Код" />
+          </Key>
+          <Property Name="Код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Категория" Type="nvarchar" MaxLength="50" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" />
+          <Property Name="Количество" Type="int" />
+          <Property Name="Цена" Type="int" />
+        </EntityType>
+        <EntityType Name="СписокМатериаловСклада">
+          <Key>
+            <PropertyRef Name="Код" />
+          </Key>
+          <Property Name="Код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="КодЗаказа" Type="int" />
+          <Property Name="КодСклада" Type="int" />
+          <Property Name="Количество" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="СписокОказанияУслуг">
           <Key>
             <PropertyRef Name="Код" />
@@ -122,6 +141,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_СписокМатериаловСклада_Заказ">
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="0..1" />
+          <End Role="СписокМатериаловСклада" Type="Self.СписокМатериаловСклада" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Заказ">
+              <PropertyRef Name="Код" />
+            </Principal>
+            <Dependent Role="СписокМатериаловСклада">
+              <PropertyRef Name="КодЗаказа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_СписокМатериаловСклада_Склад">
+          <End Role="Склад" Type="Self.Склад" Multiplicity="0..1" />
+          <End Role="СписокМатериаловСклада" Type="Self.СписокМатериаловСклада" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Склад">
+              <PropertyRef Name="Код" />
+            </Principal>
+            <Dependent Role="СписокМатериаловСклада">
+              <PropertyRef Name="КодСклада" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_СписокОказанияУслуг_Клиент">
           <End Role="Клиент" Type="Self.Клиент" Multiplicity="0..1" />
           <End Role="СписокОказанияУслуг" Type="Self.СписокОказанияУслуг" Multiplicity="*" />
@@ -140,6 +183,8 @@
           <EntitySet Name="Клиент" EntityType="Self.Клиент" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ОказаниеУслуг" EntityType="Self.ОказаниеУслуг" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Персонал" EntityType="Self.Персонал" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Склад" EntityType="Self.Склад" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="СписокМатериаловСклада" EntityType="Self.СписокМатериаловСклада" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="СписокОказанияУслуг" EntityType="Self.СписокОказанияУслуг" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Услуги" EntityType="Self.Услуги" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Заказ_Клиент" Association="Self.FK_Заказ_Клиент">
@@ -157,6 +202,14 @@
           <AssociationSet Name="FK_ОказаниеУслуг_Услуги" Association="Self.FK_ОказаниеУслуг_Услуги">
             <End Role="Услуги" EntitySet="Услуги" />
             <End Role="ОказаниеУслуг" EntitySet="ОказаниеУслуг" />
+          </AssociationSet>
+          <AssociationSet Name="FK_СписокМатериаловСклада_Заказ" Association="Self.FK_СписокМатериаловСклада_Заказ">
+            <End Role="Заказ" EntitySet="Заказ" />
+            <End Role="СписокМатериаловСклада" EntitySet="СписокМатериаловСклада" />
+          </AssociationSet>
+          <AssociationSet Name="FK_СписокМатериаловСклада_Склад" Association="Self.FK_СписокМатериаловСклада_Склад">
+            <End Role="Склад" EntitySet="Склад" />
+            <End Role="СписокМатериаловСклада" EntitySet="СписокМатериаловСклада" />
           </AssociationSet>
           <AssociationSet Name="FK_СписокОказанияУслуг_Клиент" Association="Self.FK_СписокОказанияУслуг_Клиент">
             <End Role="Клиент" EntitySet="Клиент" />
@@ -193,6 +246,7 @@
           <Property Name="Описание" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Техника" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Ответ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="СписокМатериаловСклада" Relationship="ServisCenterModel.FK_СписокМатериаловСклада_Заказ" FromRole="Заказ" ToRole="СписокМатериаловСклада" />
         </EntityType>
         <EntityType Name="Клиент">
           <Key>
@@ -268,6 +322,16 @@
             <End Role="СписокОказанияУслуг" EntitySet="СписокОказанияУслуг" />
             <End Role="ОказаниеУслуг" EntitySet="ОказаниеУслуг" />
           </AssociationSet>
+          <EntitySet Name="Склад" EntityType="ServisCenterModel.Склад" />
+          <EntitySet Name="СписокМатериаловСклада" EntityType="ServisCenterModel.СписокМатериаловСклада" />
+          <AssociationSet Name="FK_СписокМатериаловСклада_Заказ" Association="ServisCenterModel.FK_СписокМатериаловСклада_Заказ">
+            <End Role="Заказ" EntitySet="Заказ" />
+            <End Role="СписокМатериаловСклада" EntitySet="СписокМатериаловСклада" />
+          </AssociationSet>
+          <AssociationSet Name="FK_СписокМатериаловСклада_Склад" Association="ServisCenterModel.FK_СписокМатериаловСклада_Склад">
+            <End Role="Склад" EntitySet="Склад" />
+            <End Role="СписокМатериаловСклада" EntitySet="СписокМатериаловСклада" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Услуги">
           <Key>
@@ -332,6 +396,52 @@
             </Principal>
             <Dependent Role="ОказаниеУслуг">
               <PropertyRef Name="КодСпискаОказанияУслуг" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Склад">
+          <Key>
+            <PropertyRef Name="Код" />
+          </Key>
+          <Property Name="Код" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Категория" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Количество" Type="Int32" />
+          <Property Name="Цена" Type="Int32" />
+          <NavigationProperty Name="СписокМатериаловСклада" Relationship="ServisCenterModel.FK_СписокМатериаловСклада_Склад" FromRole="Склад" ToRole="СписокМатериаловСклада" />
+        </EntityType>
+        <EntityType Name="СписокМатериаловСклада">
+          <Key>
+            <PropertyRef Name="Код" />
+          </Key>
+          <Property Name="Код" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="КодЗаказа" Type="Int32" />
+          <Property Name="КодСклада" Type="Int32" />
+          <Property Name="Количество" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Заказ" Relationship="ServisCenterModel.FK_СписокМатериаловСклада_Заказ" FromRole="СписокМатериаловСклада" ToRole="Заказ" />
+          <NavigationProperty Name="Склад" Relationship="ServisCenterModel.FK_СписокМатериаловСклада_Склад" FromRole="СписокМатериаловСклада" ToRole="Склад" />
+        </EntityType>
+        <Association Name="FK_СписокМатериаловСклада_Заказ">
+          <End Type="ServisCenterModel.Заказ" Role="Заказ" Multiplicity="0..1" />
+          <End Type="ServisCenterModel.СписокМатериаловСклада" Role="СписокМатериаловСклада" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Заказ">
+              <PropertyRef Name="Код" />
+            </Principal>
+            <Dependent Role="СписокМатериаловСклада">
+              <PropertyRef Name="КодЗаказа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_СписокМатериаловСклада_Склад">
+          <End Type="ServisCenterModel.Склад" Role="Склад" Multiplicity="0..1" />
+          <End Type="ServisCenterModel.СписокМатериаловСклада" Role="СписокМатериаловСклада" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Склад">
+              <PropertyRef Name="Код" />
+            </Principal>
+            <Dependent Role="СписокМатериаловСклада">
+              <PropertyRef Name="КодСклада" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -413,6 +523,27 @@
                 <ScalarProperty Name="Стоимость" ColumnName="Стоимость" />
                 <ScalarProperty Name="Дата" ColumnName="Дата" />
                 <ScalarProperty Name="КодКлиента" ColumnName="КодКлиента" />
+                <ScalarProperty Name="Код" ColumnName="Код" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Склад">
+            <EntityTypeMapping TypeName="ServisCenterModel.Склад">
+              <MappingFragment StoreEntitySet="Склад">
+                <ScalarProperty Name="Цена" ColumnName="Цена" />
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Категория" ColumnName="Категория" />
+                <ScalarProperty Name="Код" ColumnName="Код" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="СписокМатериаловСклада">
+            <EntityTypeMapping TypeName="ServisCenterModel.СписокМатериаловСклада">
+              <MappingFragment StoreEntitySet="СписокМатериаловСклада">
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+                <ScalarProperty Name="КодСклада" ColumnName="КодСклада" />
+                <ScalarProperty Name="КодЗаказа" ColumnName="КодЗаказа" />
                 <ScalarProperty Name="Код" ColumnName="Код" />
               </MappingFragment>
             </EntityTypeMapping>

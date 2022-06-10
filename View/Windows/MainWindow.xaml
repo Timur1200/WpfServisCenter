@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfServisCenter.View.Windows"
         mc:Ignorable="d"
-        Title="" Height="550" Width="1000">
+        Title="" Height="650" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.22*"></RowDefinition>
@@ -25,11 +25,13 @@
             </Grid.ColumnDefinitions>
             <!-- Кнопки для навигации -->
             <Grid>
+               
                 <StackPanel Name="MasterPanel">
                     <Button Content="Новые заказы" Click="NewOrdersClick" Width="Auto" />
                     <Button Content="Мои заказы" Click="MyOrdersClick" Width="Auto" />
-                    <Button Content="Заказать комплектующие" Click="ZakazClick"  Width="auto"/>
-                </StackPanel>
+                    <Button Content="Склад"  Width="Auto" Click="StorageClick" />
+
+                    </StackPanel>
                 <StackPanel Name="AdminPanel" Width="Auto">
                     <Button Content="Персонал" Click="PersonalClick" Width="Auto" />
                     <Button Content="Клиенты" Click="ClientClick" Width="Auto" />
@@ -37,8 +39,10 @@
                     <Button Click="OrdersClick"  Content="Заказы" Width="Auto"/>
                     <Button Click="CompletedOrderClick"  Content="Заказы к выдачи" Width="Auto"/>
                     <Button Click="UsedServisClick" Content="Оказание услуг" Width="Auto" />
-                   
-                </StackPanel>
+                    <Button Content="Склад" Width="Auto" Click="StorageClick" />
+                    </StackPanel>
+                
+                
             </Grid>
             <Grid Background="#DEE9FC" Grid.Column="1">
                 <Frame  NavigationUIVisibility="Hidden" Name="MainFrame" />

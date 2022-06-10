@@ -15,6 +15,7 @@ using WpfServisCenter.View.Pages.Client;
 using WpfServisCenter.View.Pages.Orders;
 using WpfServisCenter.View.Pages.Personal;
 using WpfServisCenter.View.Pages.Servis;
+using WpfServisCenter.View.Pages.Storage;
 
 namespace WpfServisCenter.View.Windows
 {
@@ -96,6 +97,11 @@ namespace WpfServisCenter.View.Windows
         {
             DNSwindow dNSwindow = new DNSwindow();
             dNSwindow.Show();
+        }
+
+        private void StorageClick(object sender, RoutedEventArgs e)
+        {
+            Go(new IndexStoragePage());
         }
     }
 }

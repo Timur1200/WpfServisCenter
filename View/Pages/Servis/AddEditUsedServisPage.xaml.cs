@@ -48,6 +48,12 @@ namespace WpfServisCenter.View.Pages.Servis
 
         private void SaveClick(object sender, RoutedEventArgs e)
         {
+            if (_ListServis.Клиент == null)
+            {
+                MessageBox.Show("Нужно выбрать клиента!");
+                return;
+            }
+
             if (_ListServis.Код == 0)
             {
                 _ListServis.Дата = DateTime.Now;

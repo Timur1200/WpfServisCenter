@@ -24,6 +24,18 @@ namespace WpfServisCenter
             }
         }
 
+        public static bool CheckPhone(string Phone)
+        {
+            bool Valid = true;
+            if (string.IsNullOrEmpty(Phone)) return false;
+            foreach(char item in Phone.ToCharArray())
+            {
+                if (item == '_') {
+                   Valid = false;
+                }
+            }
+            return Valid;
+        }
 
     }
 }

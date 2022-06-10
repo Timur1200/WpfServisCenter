@@ -13,45 +13,40 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfServisCenter.View.Pages.Client
+namespace WpfServisCenter.View.Pages.Storage
 {
     /// <summary>
-    /// Логика взаимодействия для AddEditClientPage.xaml
+    /// Логика взаимодействия для AddEditStoragePage.xaml
     /// </summary>
-    public partial class AddEditClientPage : Page
+    public partial class AddEditStoragePage : Page
     {
-        public AddEditClientPage(Клиент клиент)
+        public AddEditStoragePage(Склад склад)
         {
             InitializeComponent();
-            if (клиент == null)
+            var a = Enum.GetNames(typeof(Категория));
+            CategoryComboBox.ItemsSource = a;
+            if (склад == null)
             {
-                _client = new Клиент(); 
+                _Storage = new Склад();
             }
             else
             {
-                _client = клиент;
+                _Storage = склад;
             }
-            DataContext = _client;
+            DataContext = _Storage;
         }
 
-        private Клиент _client { get; set; }
+        private Склад _Storage { get; set; }
 
         private void SaveClick(object sender, RoutedEventArgs e)
         {
-            if (_client.IsValid())
-            {// прошли валидацию данных
-                
-            }
-            else
+            if (!_Storage.IsValid())
             {
                 MessageBox.Show("Все поля обязательны для заполнения");
                 return;
             }
 
-            if (_client.Код == 0)
-            {
-                ContextEF.GetContext().Клиент.Add(_client);
-            }
+            if (_Storage.Код == 0) ContextEF.GetContext().Склад.Add(_Storage);
             ContextEF.GetContext().SaveChanges();
             MessageBox.Show("Информация сохранена!");
             PageNavigate.Back();

@@ -1,0 +1,20 @@
+﻿<Window x:Class="WpfServisCenter.View.Windows.AddStorageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfServisCenter.View.Windows"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="" Height="300" Width="400">
+    <Grid>
+        <StackPanel Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" Text="Услуга" />
+            <TextBox TextChanged="TextoxSearch_TextChanged" x:Name="TextBoxSearch" />
+            <ComboBox IsTextSearchEnabled="False" Name="ServisComboBox" DisplayMemberPath="Name" SelectedItem="{Binding Склад}" />
+            <TextBlock Text="Количество" />
+            <TextBox Name="kolvoTextBox" Text="{Binding Количество}" />
+            <Button Content="Добавить" Click="AddClick" />
+        </StackPanel>
+    </Grid>
+</Window>

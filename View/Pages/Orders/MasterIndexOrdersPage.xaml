@@ -26,6 +26,8 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Код заказа" Binding="{Binding Код}" />
                         <DataGridTextColumn Header="Дата поступления" Binding="{Binding Дата1}" />
+                        <DataGridTextColumn Header="Клиент" Binding="{Binding Клиент.Фио}" />
+                        <DataGridTextColumn Header="Телефон клиента" Binding="{Binding Клиент.Телефон}" />
                         <DataGridTextColumn Header="Техника" Binding="{Binding Техника}" /> 
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>

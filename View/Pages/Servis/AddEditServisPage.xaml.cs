@@ -36,6 +36,11 @@ namespace WpfServisCenter.View.Pages.Servis
         private Услуги _Order { get; set; } 
         private void SaveClick(object sender, RoutedEventArgs e)
         {
+            if (!_Order.IsValid())
+            {
+                MessageBox.Show("Все поля обязательны для заполнения");
+                return;
+            }
             if (_Order.Код == 0)
             {
                 ContextEF.GetContext().Услуги.Add(_Order);

@@ -13,7 +13,7 @@
         <StackPanel HorizontalAlignment="Center" Width="400" Margin="10" VerticalAlignment="Top">
             <TextBlock Text="Клиент" />
             <TextBox TextChanged="TBoxClientSearch_TextChanged" Name="TBoxClientSearch" />
-            <ComboBox SelectedItem="{Binding Клиент}" IsTextSearchEnabled="False" Name="ClientBox" DisplayMemberPath="Фио" />
+            <ComboBox SelectedItem="{Binding Клиент}" IsTextSearchEnabled="False" Name="ClientBox" DisplayMemberPath="Name" />
 
             <TextBlock Text="Техника" />
             <TextBox Text="{Binding Техника}"/>

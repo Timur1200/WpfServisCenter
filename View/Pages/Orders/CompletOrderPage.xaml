@@ -19,6 +19,13 @@
             <TextBox Text="{Binding Ответ}" />
             <TextBlock Text="Стоимость:" />
             <TextBox Text="{Binding Цена}" />
+            <ListBox DisplayMemberPath="Name"  MinHeight="50" x:Name="ServisListBox"></ListBox>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Click="AddClick" Content="+" FontSize="30" Width="76"  />
+                <Button Click="DelClick" Content="-" FontSize="30" Width="75" />
+            </StackPanel>
+            
+            <TextBlock FontSize="18" HorizontalAlignment="Center" Name="FullSumTextBox" Text="" />
             <Button Click="AcceptClick" Content="Завершить" />
 
         </StackPanel>

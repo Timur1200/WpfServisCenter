@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace WpfServisCenter
 {
-   public partial class Заказ
+    public partial class Заказ
     {
         public string ТекстСтатус
         {
             get
             {
-               
+
                 if (Статус == null) return string.Empty;
                 return ((СтатусЗаказов)Статус).ToString();
             }
@@ -33,6 +33,15 @@ namespace WpfServisCenter
                 if (ДатаВыдачи == null) return String.Empty;
                 return ДатаВыдачи.Value.ToString("D");
             }
+        }
+
+        public bool IsValid()
+        {
+            if (Клиент == null || string.IsNullOrEmpty(Техника) || string.IsNullOrEmpty(Описание))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

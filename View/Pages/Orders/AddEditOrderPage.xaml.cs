@@ -41,6 +41,13 @@ namespace WpfServisCenter.View.Pages.Orders
         }
         private void SaveClick(object sender, RoutedEventArgs e)
         {
+           
+            if (!_Order.IsValid())
+            {
+                MessageBox.Show("Все поля обязательны для заполнения");
+                return;
+            }
+
             if (_Order.Код == 0)
             {
                 _Order.ДатаПоступления = DateTime.Now;
@@ -86,6 +93,9 @@ namespace WpfServisCenter.View.Pages.Orders
             ReplaceWordStub("(дата)", order.Дата1, wordDocument);
             ReplaceWordStub("(клиент)", order.Клиент.Фио, wordDocument);
             ReplaceWordStub("(техника)", order.Техника, wordDocument);
+            ReplaceWordStub("(описание)", order.Описание, wordDocument);
+           
+            ReplaceWordStub("(сотрудник)", Session.User.Фио, wordDocument);
             wordDocument.SaveAs2(System.IO.Path.GetFullPath($@"Word/АктПриемки{Guid.NewGuid()}.docx"));
 
             wordApp.Visible = true;

@@ -35,6 +35,10 @@ namespace WpfServisCenter.View.Pages.Orders
         }
         private void ToWord(Заказ заказ)
         {
+            StringBuilder stringBuilder = new StringBuilder();
+          //  var aa = ContextEF.GetContext().СписокМатериаловСклада.Where(q => q.КодЗаказа == заказ.Код);
+          //  foreach(var item in )
+
             var wordApp = new Word.Application();
 
             wordApp.Visible = false;

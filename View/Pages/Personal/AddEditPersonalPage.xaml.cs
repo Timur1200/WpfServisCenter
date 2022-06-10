@@ -51,6 +51,11 @@ namespace WpfServisCenter.View.Pages.Personal
         private void SaveClick(object sender, RoutedEventArgs e)
         {
             _Personal.Роль = ComboBoxRoles.SelectedIndex;
+            if (!_Personal.IsValid())
+            {
+                MessageBox.Show("Все поля обязательны для заполнения");
+                return;
+            }
             if (_Personal.Код == 0) ContextEF.GetContext().Персонал.Add(_Personal);
             ContextEF.GetContext().SaveChanges();
             MessageBox.Show("Информация сохранена");

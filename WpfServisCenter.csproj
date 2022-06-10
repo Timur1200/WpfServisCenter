@@ -100,9 +100,13 @@
     </Compile>
     <Compile Include="Model\ContextEF.cs" />
     <Compile Include="Model\Заказ.cs" />
+    <Compile Include="Model\Клиент.cs" />
     <Compile Include="Model\ОказаниеУслуг.cs" />
     <Compile Include="Model\Персонал.cs" />
+    <Compile Include="Model\Склад.cs" />
+    <Compile Include="Model\СписокМатериаловСклада.cs" />
     <Compile Include="Model\СписокОказанияУслуг.cs" />
+    <Compile Include="Model\Услуги.cs" />
     <Compile Include="Servis\Enums.cs" />
     <Compile Include="Servis\MySystem.cs" />
     <Compile Include="Servis\PageNavigate.cs" />
@@ -158,8 +162,17 @@
     <Compile Include="View\Pages\Servis\ListServisAddEditPage.xaml.cs">
       <DependentUpon>ListServisAddEditPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\Storage\AddEditStoragePage.xaml.cs">
+      <DependentUpon>AddEditStoragePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Storage\IndexStoragePage.xaml.cs">
+      <DependentUpon>IndexStoragePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\AddServisWindow.xaml.cs">
       <DependentUpon>AddServisWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\AddStorageWindow.xaml.cs">
+      <DependentUpon>AddStorageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\DNSwindow.xaml.cs">
       <DependentUpon>DNSwindow.xaml</DependentUpon>
@@ -180,6 +193,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Персонал.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Склад.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="СписокМатериаловСклада.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="СписокОказанияУслуг.cs">
@@ -326,7 +345,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\Storage\AddEditStoragePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Storage\IndexStoragePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\AddServisWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\AddStorageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

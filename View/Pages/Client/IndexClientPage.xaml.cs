@@ -23,11 +23,15 @@ namespace WpfServisCenter.View.Pages.Client
         public IndexClientPage()
         {
             InitializeComponent();
+            TypeComBox.Items.Add("Номер телефона");
+            TypeComBox.Items.Add("Фио");
+            TypeComBox.Items.Add("Адрес");
         }
-
+        List<Клиент> _ClientsList { get; set;} = new List<Клиент>(); 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            DGridClient.ItemsSource = ContextEF.GetContext().Клиент.ToList();
+            _ClientsList = ContextEF.GetContext().Клиент.ToList();
+            DGridClient.ItemsSource = _ClientsList;
         }
 
         private void AddClick(object sender, RoutedEventArgs e)
@@ -62,6 +66,41 @@ namespace WpfServisCenter.View.Pages.Client
                 return;
             }
             PageNavigate.MainWindowFrame.Navigate(new AddEditClientPage(DGridClient.SelectedItem as Клиент));
+        }
+
+        private void Search()
+        {
+            if (SearchTextBox.Text == "")
+            {
+                Page_Loaded(null,null);
+                return;
+            }
+
+            if(TypeComBox.SelectedIndex == 0)
+            {
+                DGridClient.ItemsSource = ContextEF.GetContext().Клиент.Where(q => q.Телефон.Contains(SearchTextBox.Text))
+                    .ToList();
+            }
+          else if (TypeComBox.SelectedIndex == 1)
+            {
+                DGridClient.ItemsSource = ContextEF.GetContext().Клиент.Where(q => q.Фио.Contains(SearchTextBox.Text))
+                    .ToList();
+            }
+            else
+            {
+                DGridClient.ItemsSource = ContextEF.GetContext().Клиент.Where(q => q.Адрес.Contains(SearchTextBox.Text))
+                    .ToList();
+            }
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Search();
+        }
+
+        private void TypeComBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Search();
         }
     }
 }

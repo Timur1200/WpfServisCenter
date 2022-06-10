@@ -6,19 +6,20 @@ using System.Threading.Tasks;
 
 namespace WpfServisCenter
 {
-    partial class Персонал
+    partial class Склад
     {
-        public string ИмяРоли
+        public string Name
         {
             get
             {
-                return ((Роли)Роль.Value).ToString();
+                return $"{Имя}, {Количество}ШТ.";
             }
         }
 
         public bool IsValid()
         {
-            if (Роль == null || string.IsNullOrEmpty(Фио) || !(MySystem.CheckPhone(Телефон)) || string.IsNullOrEmpty(Пароль))
+            if (string.IsNullOrEmpty(Категория) || string.IsNullOrEmpty(Имя) || 
+                Количество == null || Цена == null)
             {
                 return false;
             }

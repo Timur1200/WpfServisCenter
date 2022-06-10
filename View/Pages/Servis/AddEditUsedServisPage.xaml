@@ -13,7 +13,7 @@
         <StackPanel Width="250" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock  Text="Клиент:" />
             <TextBox x:Name="TextBoxClientSearch" TextChanged="TextBoxClientSearch_TextChanged" />
-            <ComboBox  SelectedItem="{Binding Клиент}" IsTextSearchEnabled="False"  DisplayMemberPath="Фио" Name="ClientComboBox" />
+            <ComboBox SelectedIndex="0" SelectedItem="{Binding Клиент}" IsTextSearchEnabled="False"  DisplayMemberPath="Фио" Name="ClientComboBox" />
             <Button Click="SaveClick" Content="Сохранить" /> 
         </StackPanel>
     </Grid>

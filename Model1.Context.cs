@@ -32,5 +32,7 @@ namespace WpfServisCenter
         public virtual DbSet<Услуги> Услуги { get; set; }
         public virtual DbSet<ОказаниеУслуг> ОказаниеУслуг { get; set; }
         public virtual DbSet<СписокОказанияУслуг> СписокОказанияУслуг { get; set; }
+        public virtual DbSet<Склад> Склад { get; set; }
+        public virtual DbSet<СписокМатериаловСклада> СписокМатериаловСклада { get; set; }
     }
 }

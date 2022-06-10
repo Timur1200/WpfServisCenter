@@ -18,7 +18,9 @@
             <StackPanel Orientation="Horizontal">
                 <Button Click="AddClick" Content="Создать" />
                 <Button Click="EditClick" Content="Изменить" />
-                <Button Click="DelClick" Content="Удалить"  /> 
+                <Button Click="DelClick" Content="Удалить"  />
+                <ComboBox SelectedIndex="0" Name="TypeComBox" Width="160" SelectionChanged="TypeComBox_SelectionChanged" />
+                <TextBox Width="150" Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" />
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
